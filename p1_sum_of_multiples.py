@@ -33,6 +33,19 @@ def multiples_of(factors, cap):
     return result
 
 
+def multiples_of_short(factors, cap):
+    '''
+    Returns a list of natural numbers that are multiples of given factors
+    under the cap
+    Shorter but not optimal solution
+    '''
+    multiples = [
+        i for i in range(1, cap) 
+        if any(i % f == 0 for f in factors)
+    ]
+    return multiples
+
+
 def main():
     '''
     Find the sum of all the multiples of 3 or 5 below 1000
@@ -40,9 +53,15 @@ def main():
     '''
     factors = [3, 5]
     cap = 1000
+    
     multiples = multiples_of(factors, cap)
     result = sum(multiples)
     print(result)
+
+    multiples = multiples_of_short(factors, cap)
+    result = sum(multiples)
+    print(result)
+
 
 if __name__ == "__main__":
     main()
