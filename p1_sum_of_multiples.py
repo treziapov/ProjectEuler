@@ -40,7 +40,7 @@ def multiples_of_short(factors, cap):
     Shorter but not optimal solution
     '''
     multiples = [
-        i for i in range(1, cap) 
+        i for i in range(1, cap)
         if any(i % f == 0 for f in factors)
     ]
     return multiples
@@ -53,7 +53,7 @@ def main():
     '''
     factors = [3, 5]
     cap = 1000
-    
+
     multiples = multiples_of(factors, cap)
     result = sum(multiples)
     print(result)
