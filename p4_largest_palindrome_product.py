@@ -1,10 +1,11 @@
-# A palindromic number reads the same both ways. 
-# The largest palindrome made from the product of two 2-digit 
+# A palindromic number reads the same both ways.
+# The largest palindrome made from the product of two 2-digit
 # numbers is 9009 = 91 × 99.
 
 # Find the largest palindrome made from the product of two 3-digit numbers.
 import time
 import functools
+
 
 def is_palindrome_recursive(s):
     '''
@@ -50,6 +51,7 @@ def brute_force_largest_palindrome_product(palindrome_func, num_digits):
                 current_max_product = (candidate, i, j)
     return current_max_product
 
+
 def optimized_largest_palindrome_product(palindrome_func, num_digits):
     '''
     Optimized brute force algorithm
@@ -78,9 +80,11 @@ def time_palindrome(func, start, end, description):
 
 def time_largest_palindrome_product(func, num_digits, description):
     start = time.time()
-    func(num_digits)
+    result = func(num_digits)
     elapsed = time.time() - start
     print('{desc}: {sec} seconds'.format(desc=description, sec=elapsed))
+    print(result)
+
 
 def main():
     '''
@@ -96,15 +100,13 @@ def main():
     time_palindrome(is_palindrome_string_reverse, start, end, 'String reverse')
 
     # Largest palindrome product time tests
-    num_digits = 5
+    num_digits = 4
     p = is_palindrome_string_reverse
     f_brute = functools.partial(brute_force_largest_palindrome_product, p)
     f_optimized = functools.partial(optimized_largest_palindrome_product, p)
     time_largest_palindrome_product(f_brute, num_digits, 'Brute force')
     time_largest_palindrome_product(f_optimized, num_digits, 'Brute force')
 
-    product = brute_force_largest_palindrome_product(p, 3)
-    print(product)
 
 if __name__ == "__main__":
     main()
