@@ -12,7 +12,7 @@ def prime_factors_by_trial_division(n):
     if n < 2:
         return []
     prime_factors = []
-    max_factor = math.floor(math.sqrt(n))
+    max_factor = math.floor(math.sqrt(n)) + 1
     for p in prime_sieve_eratosthenes(max_factor):
         if p * p > n:
             break
@@ -47,6 +47,7 @@ def main():
     number = 600851475143
     primes = prime_factors_by_trial_division(number)
     print(primes[-1])
+
 
 if __name__ == "__main__":
     main()

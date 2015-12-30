@@ -105,7 +105,7 @@ def main():
     f_brute = functools.partial(brute_force_largest_palindrome_product, p)
     f_optimized = functools.partial(optimized_largest_palindrome_product, p)
     time_largest_palindrome_product(f_brute, num_digits, 'Brute force')
-    time_largest_palindrome_product(f_optimized, num_digits, 'Brute force')
+    time_largest_palindrome_product(f_optimized, num_digits, 'Optimized')
 
 
 if __name__ == "__main__":
