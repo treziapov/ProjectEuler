@@ -13,6 +13,9 @@ import time
 
 
 def brute_force_sum_square_difference(numbers):
+    '''
+    Brute force solution to calculate sum square difference
+    '''
     sum_of_squares = 0
     square_of_sum = 0
     for n in numbers:
@@ -21,6 +24,21 @@ def brute_force_sum_square_difference(numbers):
     square_of_sum = square_of_sum**2
     diff = abs(sum_of_squares - square_of_sum)
     return diff
+
+
+def optimal_sum_square_difference(numbers):
+    '''
+    Optimal solution to calculate sum square difference
+    Note:
+        Assumes numbers make up a contigious range starting from 1
+    '''
+    n = numbers[-1]
+
+    sum_squared = (n * (n + 1) // 2) ** 2
+    square_sum = (n * (n + 1) * (2 * n + 1)) // 6
+
+    result = sum_squared - square_sum
+    return result
 
 
 def time_func(func, args, description):
@@ -42,7 +60,8 @@ def main():
     Answer: 25164150
     '''
     numbers = range(1, 101)
-    time_func(brute_force_sum_square_difference, numbers, 'Optimized')
+    time_func(brute_force_sum_square_difference, numbers, 'Brute force')
+    time_func(optimal_sum_square_difference, numbers, 'Optimized')
 
 if __name__ == "__main__":
     main()
