@@ -3,7 +3,7 @@
 
 # What is the smallest positive number that is evenly
 # divisible by all of the numbers from 1 to 20?
-import time
+import time_tools
 import itertools
 import p3_largest_prime_factor
 
@@ -75,17 +75,6 @@ def is_common_multiple(n, numbers):
     return True
 
 
-def time_func(func, args, description):
-    '''
-    Timing wrapper
-    '''
-    start = time.time()
-    result = func(args)
-    elapsed = time.time() - start
-    print('Result: {result}'.format(result=result))
-    print('{desc}: {sec} seconds'.format(desc=description, sec=elapsed))
-
-
 def main():
     '''
     What is the smallest positive number that is evenly
@@ -94,10 +83,11 @@ def main():
     Answer: 232792560
     '''
     numbers = range(1, 21)
+    args = [numbers]
     # time_func(brute_force_smallest_multiple, numbers, 'Brute force')
     # time_func(optimized_brute_force_smallest_multiple, numbers,
     #     'Optimized brute force')
-    time_func(optimized_smallest_multiple, numbers, 'Optimized')
+    time_tools.time_func(optimized_smallest_multiple, args, 'Optimized')
 
 if __name__ == "__main__":
     main()

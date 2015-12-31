@@ -70,42 +70,18 @@ def optimized_largest_palindrome_product(palindrome_func, num_digits):
     return current_max_product
 
 
-def time_palindrome(func, start, end, description):
-    start = time.time()
-    for i in range(1000, 100000):
-        func(str(i))
-    elapsed = time.time() - start
-    print('{desc}: {sec} seconds'.format(desc=description, sec=elapsed))
-
-
-def time_largest_palindrome_product(func, num_digits, description):
-    start = time.time()
-    result = func(num_digits)
-    elapsed = time.time() - start
-    print('{desc}: {sec} seconds'.format(desc=description, sec=elapsed))
-    print(result)
-
-
 def main():
     '''
     Find the largest palindrome made from the product of two 3-digit numbers
 
     Answer: 906609 = 913 * 993
     '''
-    # Palindrome check time tests
-    start = 1000
-    end = 1000000
-    time_palindrome(is_palindrome_recursive, start, end, 'Recursive')
-    time_palindrome(is_palindrome_iterative, start, end, 'Iterative')
-    time_palindrome(is_palindrome_string_reverse, start, end, 'String reverse')
 
     # Largest palindrome product time tests
-    num_digits = 4
+    num_digits = 3
     p = is_palindrome_string_reverse
-    f_brute = functools.partial(brute_force_largest_palindrome_product, p)
-    f_optimized = functools.partial(optimized_largest_palindrome_product, p)
-    time_largest_palindrome_product(f_brute, num_digits, 'Brute force')
-    time_largest_palindrome_product(f_optimized, num_digits, 'Optimized')
+    product = optimized_largest_palindrome_product(p, num_digits)
+    print(product)
 
 
 if __name__ == "__main__":

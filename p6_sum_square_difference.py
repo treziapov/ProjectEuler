@@ -9,7 +9,7 @@
 
 # Find the difference between the sum of the squares of the first one
 # hundred natural numbers and the square of the sum
-import time
+import time_tools
 
 
 def brute_force_sum_square_difference(numbers):
@@ -41,17 +41,6 @@ def optimal_sum_square_difference(numbers):
     return result
 
 
-def time_func(func, args, description):
-    '''
-    Timing wrapper
-    '''
-    start = time.time()
-    result = func(args)
-    elapsed = time.time() - start
-    print('Result: {result}'.format(result=result))
-    print('{desc}: {sec} seconds'.format(desc=description, sec=elapsed))
-
-
 def main():
     '''
     Find the difference between the sum of the squares of the first one
@@ -60,8 +49,9 @@ def main():
     Answer: 25164150
     '''
     numbers = range(1, 101)
-    time_func(brute_force_sum_square_difference, numbers, 'Brute force')
-    time_func(optimal_sum_square_difference, numbers, 'Optimized')
+    args = [numbers]
+    time_tools.time_func(brute_force_sum_square_difference, args, 'Brute force')
+    time_tools.time_func(optimal_sum_square_difference, args, 'Optimized')
 
 if __name__ == "__main__":
     main()
