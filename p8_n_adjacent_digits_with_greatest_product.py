@@ -31,6 +31,44 @@ def brute_force_n_adjacent_digits_with_greatest_product(n, s):
     return current_max
 
 
+def optimized_n_adjacent_digits_with_greatest_product(n, s):
+    '''
+    Determines the n adjacent digits in the given number with the
+    greatest product
+
+    The algorithm iterates the whole number string keeping track of
+    the local maximum and local products to avoid repetitive work
+    '''
+    len_s = len(s)
+    if len_s < n:
+        return None
+
+    current_string = s[0:n]
+    current_numbers = [int(c) for c in current_string]
+    current_product = reduce(operator.mul, current_numbers, 1)
+    current_max = (current_product, current_numbers)
+
+    max_index = len_s - n
+    for i in range(0, max_index):
+        old_digit = current_numbers[0]
+        new_digit = int(s[i+n])
+        
+        current_string = s[i + 1:i + 1 + n]
+        current_numbers = current_numbers[1:] + [new_digit]
+        
+        if (old_digit != 0):
+            current_product = current_product // old_digit
+        else:
+            current_product = reduce(operator.mul, current_numbers[:-1], 1)
+        
+        current_product = current_product * new_digit
+        
+        if (current_product > current_max[0]):
+            current_max = (current_product, current_numbers)
+
+    return current_max 
+
+
 def main():
     '''
     Find the thirteen adjacent digits in the 1000-digit number that
@@ -67,6 +105,8 @@ def main():
     f = brute_force_n_adjacent_digits_with_greatest_product
     time_tools.time_func(f, args, "Brute force")
 
+    f = optimized_n_adjacent_digits_with_greatest_product
+    time_tools.time_func(f, args, "Optimized")
 
 if __name__ == "__main__":
     main()
