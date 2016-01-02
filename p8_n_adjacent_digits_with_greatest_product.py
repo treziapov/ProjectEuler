@@ -38,7 +38,7 @@ def main():
 
     What is the value of this product?
 
-    Answer: 104743
+    Answer: 23514624000
     '''
     n = 13
     s = (
