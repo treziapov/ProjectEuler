@@ -102,6 +102,7 @@ def main():
         "71636269561882670428252483600823257530420752963450"
     )
     args = [n, s]
+    
     f = brute_force_n_adjacent_digits_with_greatest_product
     time_tools.time_func(f, args, "Brute force")
 
