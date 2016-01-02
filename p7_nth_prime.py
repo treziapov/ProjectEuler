@@ -7,7 +7,7 @@ import time_tools
 
 def brute_force_nth_prime(n):
     '''
-
+    Computes the n'th prime by keeping track of current primes
     '''
     primes = set()
 
@@ -44,7 +44,7 @@ def main():
     n = 10001
     args = [n]
     time_tools.time_func(brute_force_nth_prime, args, "Brute force")
-    return None
+
 
 if __name__ == "__main__":
     main()
