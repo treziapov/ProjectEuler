@@ -10,8 +10,8 @@ def brute_force_pythagorean_triplet_of_sum(n):
     Calculates the pythagorean triplet of provided sum by iterating
     through all distinct values for 3 numbers and checking each triplet
     '''
-    for i in range(1, n // 3 + 1):
-        for j in range(i + 1, n // 2 + 1):
+    for i in range(1, n // 3):
+        for j in range(i + 1, n // 2):
             k = n - i - j
             if is_pythagorean_triplet(i, j, k):
                 triplet_sum = sum([i, j, k])
