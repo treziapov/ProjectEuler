@@ -22,10 +22,10 @@ def brute_force_n_adjacent_digits_with_greatest_product(n, s):
 
     max_index = len(s) - n - 1
     for i in range(0, max_index):
-        current_string = s[i : i + n]
+        current_string = s[i:i + n]
         current_numbers = [int(c) for c in current_string]
         current_product = reduce(operator.mul, current_numbers, 1)
-        
+
         if (current_product > current_max[0]):
             current_max = (current_product, current_numbers)
     return current_max
@@ -52,27 +52,27 @@ def optimized_n_adjacent_digits_with_greatest_product(n, s):
     for i in range(0, max_index):
         old_digit = current_numbers[0]
         new_digit = int(s[i+n])
-        
+
         current_string = s[i + 1:i + 1 + n]
         current_numbers = current_numbers[1:] + [new_digit]
-        
+
         if (old_digit != 0):
             current_product = current_product // old_digit
         else:
             current_product = reduce(operator.mul, current_numbers[:-1], 1)
-        
+
         current_product = current_product * new_digit
-        
+
         if (current_product > current_max[0]):
             current_max = (current_product, current_numbers)
 
-    return current_max 
+    return current_max
 
 
 def main():
     '''
     Find the thirteen adjacent digits in the 1000-digit number that
-    have the greatest product 
+    have the greatest product
 
     What is the value of this product?
 
@@ -102,7 +102,7 @@ def main():
         "71636269561882670428252483600823257530420752963450"
     )
     args = [n, s]
-    
+
     f = brute_force_n_adjacent_digits_with_greatest_product
     time_tools.time_func(f, args, "Brute force")
 

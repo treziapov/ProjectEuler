@@ -1,4 +1,4 @@
-# A Pythagorean triplet is a set of three natural numbers, 
+# A Pythagorean triplet is a set of three natural numbers,
 # a < b < c, for which,
 # a^2 + b^2 = c^2
 # For example, 3^2 + 4^2 = 9 + 16 = 25 = 5^2
@@ -29,7 +29,7 @@ def optimized_pythagorean_triplet_of_sum(n):
 
 def is_pythagorean_triplet(a, b, c):
     '''
-    Determines if the provided 3 arguments (in asecnding order) 
+    Determines if the provided 3 arguments (in asecnding order)
     are a pythagorean triplet, which must satify the following equation:
 
     a^2 + b^2 = c^2
