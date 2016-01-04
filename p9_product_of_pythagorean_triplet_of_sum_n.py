@@ -22,8 +22,27 @@ def brute_force_pythagorean_triplet_of_sum(n):
 
 def optimized_pythagorean_triplet_of_sum(n):
     '''
+    Calculates the pythagorean triplet of provided sum by using
+    a derived formula:
 
+    a^2 + b^2 = c^2
+    a + b + c = 1000
+    
+    ->  a + b + sqrt(a^2 + b^2) = 1000  
+    ->  a^2 + b^2 = (1000 - a - b)^2
+    ->  a^2 + b^2 = 1000000 - 1000a - 1000b - 1000a + a^2 - ab - 1000b - ab - b^2
+    ->  a^2 + b^2 = 1000000 - 2000a - 2000b + 2ab + a^2 + b^2
+    ->  0 = 1000000 - 2000(a + b) + 2ab
+    ->  2000a + 2000b - 2ab = 1000000
+    -> ...
+    -> a = (500000 - 1000b) / (1000 - b)
     '''
+    for b in range(1, n // 2):
+        a = (500000 - 1000 * b) / (1000 - b)
+        if a % 1 == 0:
+            a = int(a)
+            c = n - a - b
+            return (a, b, c, a * b * c)
     return None
 
 
