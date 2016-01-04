@@ -7,7 +7,8 @@ import time_tools
 
 def brute_force_nth_prime(n):
     '''
-
+    Calculates the nth prime by iterating though all numbers and
+    keeping track of encountered primes
     '''
     primes = set()
 
@@ -22,7 +23,7 @@ def brute_force_nth_prime(n):
             if i % p == 0:
                 return False
         return True
-                    
+
     current = 2
 
     while True:
