@@ -12,7 +12,7 @@ def prime_factors_by_trial_division(n):
     if n < 2:
         return []
     prime_factors = []
-    max_factor = math.floor(math.sqrt(n)) + 1
+    max_factor = int(math.sqrt(n)) + 1
     for p in prime_sieve_eratosthenes(max_factor):
         if p * p > n:
             break
@@ -30,7 +30,7 @@ def prime_sieve_eratosthenes(n):
     O(nloglogn) runtime
     O(n) space
     '''
-    max_factor = math.floor(math.sqrt(n))
+    max_factor = int(math.sqrt(n)) + 1
     prime_candidates = {}
     for i in range(2, max_factor):
         if i not in prime_candidates:
@@ -43,6 +43,8 @@ def prime_sieve_eratosthenes(n):
 def main():
     '''
     Determine the largest prime factor of the number 600851475143
+
+    Answer: 6857
     '''
     number = 600851475143
     primes = prime_factors_by_trial_division(number)
